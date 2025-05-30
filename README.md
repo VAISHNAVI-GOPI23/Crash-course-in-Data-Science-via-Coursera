@@ -1,104 +1,80 @@
+
+  
 # Amazon Product Review Sentiment Analysis
 
-This project performs sentiment analysis on Amazon product reviews using Natural Language Processing (NLP) and Machine Learning (ML). Reviews are classified as **positive**, **neutral**, or **negative** based on their text content.
+This project performs sentiment analysis on a subset of Amazon product reviews. The goal is to classify reviews into **positive**, **neutral**, or **negative** sentiments based on the review text.
 
 ---
 
-## What I Learned from the Coursera Data Science Crash Course
+## What I Learned
 
-During the course, I gained practical knowledge in:
-- Understanding the **data science lifecycle** from data collection to model evaluation.
-- Performing **data wrangling** and **exploratory data analysis (EDA)**.
-- Applying **text preprocessing techniques** like stopword removal, tokenization, and lemmatization.
-- Using **vectorization (TF-IDF)** to convert text into numerical features.
-- Building and evaluating a **machine learning classification model**.
-- Implementing real-world projects using **Python**, **pandas**, and **scikit-learn**.
-
- **Course Certificate**: https://www.coursera.org/account/accomplishments/verify/W2VQGBG5XJ7H?utm_source=ios&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course
+- Text preprocessing techniques: cleaning, tokenization, stopword removal, and lemmatization
+- How to use NLTK’s `PunktSentenceTokenizer` and `TreebankWordTokenizer` to avoid tokenizer errors in Google Colab
+- Feature extraction using TF-IDF vectorization
+- Building a machine learning model with Logistic Regression for text classification
+- Evaluating model performance with classification reports and confusion matrices
+- Uploading and handling datasets in Google Colab
 
 ---
 
-# Dataset Used
+## Dataset
 
-**Amazon Fine Food Reviews**  
-- Source: [Kaggle Dataset](https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews)
-- 568,000+ reviews including rating scores and text
-- Columns used: `Text` (Review body) and `Score` (Rating)
-
----
-
-# Technologies & Libraries
-
-- Python
-- Pandas, NumPy
-- NLTK (Natural Language Toolkit)
-- Scikit-learn
-- Matplotlib & Seaborn
-- Jupyter Notebook / Google Colab
+- The dataset is a small subset of Amazon product reviews with columns including `Text` and `Score`.
+- Sentiment labels are created based on the score:
+  - Scores 1 and 2: **Negative**
+  - Score 3: **Neutral**
+  - Scores 4 and 5: **Positive**
 
 ---
 
-# How the Program Works — Step-by-Step
+## How the Program Works (Step-by-step)
 
-1. **Dataset Upload & Loading**
-   - Load the `Reviews.csv` file using pandas.
-   - Keep only `Text` and `Score` columns.
-
-2. **Data Cleaning**
-   - Remove duplicates and missing values.
-   - Filter scores to be between 1 and 5.
-
-3. **Label Sentiment**
-   - Convert numerical scores into sentiment labels:
-     - `1-2` → Negative
-     - `3` → Neutral
-     - `4-5` → Positive
-
-4. **Text Preprocessing**
-   - Convert text to lowercase.
-   - Remove punctuation and non-alphabetic characters.
-   - Tokenize text into words.
-   - Remove stopwords (like "the", "is", "and").
-   - Lemmatize words to their root forms.
-
-5. **Text Vectorization**
-   - Use `TfidfVectorizer` to transform the text into numerical features.
-
-6. **Model Training**
-   - Split the data into training and test sets.
-   - Train a Logistic Regression classifier.
-
-7. **Model Evaluation**
-   - Predict sentiments on the test set.
-   - Evaluate performance using classification report and confusion matrix.
-
-8. **Model Saving**
-   - Save both the trained model and the vectorizer using `joblib` for future use.
-
+1. **Upload Dataset**: Upload your CSV file (`Reviews_small_demo.csv`) into the Colab notebook.
+2. **Import Libraries & Download Resources**: Installs and sets up necessary packages like NLTK and scikit-learn.
+3. **Load Data**: Loads the CSV file into a pandas DataFrame.
+4. **Label Sentiment**: Maps numerical review scores to sentiment categories (positive, neutral, negative).
+5. **Text Preprocessing**:
+    - Converts text to lowercase
+    - Removes special characters and punctuation
+    - Tokenizes sentences using `PunktSentenceTokenizer`
+    - Tokenizes words using `TreebankWordTokenizer` (this avoids the common `punkt_tab` error in Colab)
+    - Removes stopwords
+    - Lemmatizes words to their base forms
+6. **TF-IDF Vectorization**: Converts cleaned text into numerical features.
+7. **Train-Test Split**: Splits data into training and testing sets.
+8. **Train Model**: Trains a Logistic Regression classifier on training data.
+9. **Evaluate Model**: Prints classification report and visualizes confusion matrix for model predictions.
 
 ---
 
-# How to Run This Project
+## How to Run
 
-1. Open [Google Colab](https://colab.research.google.com/)
-2. Upload this notebook and `Reviews.csv`
-3. Run the notebook step-by-step
-4. Download the trained model (`sentiment_model.pkl`) and vectorizer (`tfidf_vectorizer.pkl`) if needed
+- Open the provided Google Colab notebook.
+- Upload the `Reviews_small_demo.csv` dataset when prompted.
+- Run all cells sequentially.
+- Check output cells for model accuracy and evaluation metrics.
 
 ---
 
-# Future Improvements
+## Certificate
 
-- Add a Streamlit or Flask app for real-time review classification
-- Use deep learning (LSTM, BERT) for better performance
-- Expand dataset for multilingual analysis
+Add your Coursera Data Science course certificate link here:
+https://www.coursera.org/account/accomplishments/verify/W2VQGBG5XJ7H?utm_source=ios&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course
+
+---
+
+## Notes
+
+- This project demonstrates practical skills learned from the Coursera Data Science crash course.
+- The use of explicit tokenizers ensures the notebook runs smoothly on Google Colab without NLTK resource errors.
+- This repository is ideal for showcasing beginner to intermediate data science skills.
 
 ---
 
 # Author
 
 **Vaishnavi gopi**  
-Connect with me onhttps://www.linkedin.com/in/vaishnavi-gopi-183653243?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app 
+Connect with me on https://www.linkedin.com/in/vaishnavi-gopi-183653243?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app 
 
 ---
 
